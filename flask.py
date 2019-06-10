@@ -9,3 +9,8 @@ with open('/home/administrator/Desktop/flask_ex/data_for_rest.json', 'r'
 json_formatted_data = json.loads(data)
 
 length = len(json_formatted_data['people'])
+
+
+@app.route('/')
+def index():
+    return jsonify(json_formatted_data)
