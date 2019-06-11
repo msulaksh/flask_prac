@@ -14,3 +14,10 @@ length = len(json_formatted_data['people'])
 @app.route('/')
 def index():
     return jsonify(json_formatted_data)
+
+
+
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
