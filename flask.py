@@ -11,9 +11,13 @@ json_formatted_data = json.loads(data)
 length = len(json_formatted_data['people'])
 
 
+
+
 @app.route('/')
 def index():
     return jsonify(json_formatted_data)
+
+
 
 @app.route('/search', methods=['GET'])
 def search():
@@ -25,6 +29,22 @@ def search():
 
     return jsonify('Not Found')
 
+
+
+@app.route('/page/<int:page>', methods=['GET', 'POST'])
+def show_users(page):
+    try:
+        p = []
+        i = page * 5 - 5
+        while i < page * 5:
+            if i >= length:
+                p.append(json_formatted_data['people'][i - 1])
+            else:
+                p.append(json_formatted_data['people'][i])
+            i = i + 1
+        return jsonify(p)
+    except IndexError:
+        return jsonify(p)
 
 
 if __name__ == '__main__':
