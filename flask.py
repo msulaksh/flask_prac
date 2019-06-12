@@ -10,14 +10,13 @@ json_formatted_data = json.loads(data)
 
 length = len(json_formatted_data['people'])
 
-
-
+##Index page showing full data 
 
 @app.route('/')
 def index():
     return jsonify(json_formatted_data)
 
-
+##Search using email as a argument
 
 @app.route('/search', methods=['GET'])
 def search():
@@ -29,7 +28,7 @@ def search():
 
     return jsonify('Not Found')
 
-
+##Implementing pagination to show limited results.
 
 @app.route('/page/<int:page>', methods=['GET', 'POST'])
 def show_users(page):
