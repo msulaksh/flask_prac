@@ -15,7 +15,15 @@ length = len(json_formatted_data['people'])
 def index():
     return jsonify(json_formatted_data)
 
+@app.route('/search', methods=['GET'])
+def search():
+    emailid = request.args.get('email')
 
+    for i in range(0, length):
+        if emailid in json_formatted_data['people'][i]['email']:
+            return jsonify(json_formatted_data['people'][i])
+
+    return jsonify('Not Found')
 
 
 
