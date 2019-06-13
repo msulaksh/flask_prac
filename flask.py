@@ -10,6 +10,8 @@ json_formatted_data = json.loads(data)
 
 length = len(json_formatted_data['people'])
 
+app = Flask(__name__)
+
 ##Index page showing full data 
 
 @app.route('/')
